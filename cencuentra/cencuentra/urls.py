@@ -13,12 +13,22 @@ Including another URLconf
     1. Add an import:  from blog import urls as blog_urls
     2. Add a URL to urlpatterns:  url(r'^blog/', include(blog_urls))
 """
-from django.conf.urls import include, url
+from django.conf.urls import url, include
 from django.contrib import admin
-from api import urls as api_urls
+from rest_framework.authtoken import views
 
 urlpatterns = [
-    url(r'^admin/', include(admin.site.urls)),
-    # API
-    url(r'^api/v1/', include(api_urls, namespace='api')),
+    url(r'^admin/', admin.site.urls),
+    url(r'^api/v1/', include('users.urls', namespace='users')),
+
+    # REST Framework URL's
+    url(r'^api-auth/', include(
+        'rest_framework.urls',
+        namespace='rest_framework'
+    ))
+]
+
+# URL to obtain user Auth Token
+urlpatterns += [
+    url(r'^api/v1/token-auth/', views.obtain_auth_token)
 ]
