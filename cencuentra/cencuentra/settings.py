@@ -40,6 +40,7 @@ INSTALLED_APPS = (
     # api
     'api',
     'users',
+    'negocios',
     # Rest Framework
     'rest_framework',
 )
