@@ -39,7 +39,6 @@ INSTALLED_APPS = (
     'django.contrib.staticfiles',
     # api
     'api',
-    'users',
     'negocios',
     # Rest Framework
     'rest_framework',
